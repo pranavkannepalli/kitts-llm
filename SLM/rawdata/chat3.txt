@@ -1,0 +1,370 @@
+[2/4/23, 6:00:51 PM] Krishna Chintalapudi: Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+[2/4/23, 6:00:51 PM] Pranav Kannepalli: Hello Krishna Uncle. This is Pranav. My dad sent your contact to me. I was just wondering what time you are available to meet tomorrow. Anytime after 10 am should work for me.
+[2/5/23, 10:28:43 AM] Pranav Kannepalli: Hello again 👋. Just following up on the previous message.
+[2/19/23, 6:21:59 PM] Pranav Kannepalli: https://www.kaggle.com/pranavkannepalli/cifarprecisionpredictor
+[2/19/23, 6:22:02 PM] Pranav Kannepalli: Hi Krishna Uncle
+[2/19/23, 6:23:33 PM] Pranav Kannepalli: * This is what I've made so far. It was overfitting so I doubled the dataset size, added a dropout, and also added early stopping so it doesn't keep going. It's achieving about 66% percent accuracy right now.
+[2/19/23, 6:26:11 PM] Krishna Chintalapudi: I am in Florida pranav. Can we chat once I come back. What architectures did you try for the classifier.
+[2/19/23, 6:26:36 PM] Pranav Kannepalli: I tried a convolutional neural network
+[2/19/23, 6:26:56 PM] Pranav Kannepalli: Yeah, we can schedule a time once you're back
+[2/19/23, 6:28:00 PM] Krishna Chintalapudi: What was you test set accuracy on the classifier.
+[2/19/23, 6:28:26 PM] Pranav Kannepalli: Test set accuracy was about 66% percent while the train set was 71% before it stopped
+[2/19/23, 6:28:54 PM] Krishna Chintalapudi: Hmm.... Ok let's chat when I come back.
+[2/19/23, 6:29:14 PM] Pranav Kannepalli: Ok 👍
+[2/19/23, 6:30:49 PM] Krishna Chintalapudi: Mnist is an easy one. You get 98 percent easily. Try different architectures meanwhile.
+[2/19/23, 6:30:59 PM] Pranav Kannepalli: No for the second model
+[2/19/23, 6:31:04 PM] Pranav Kannepalli: Sorry that’s my bad
+[2/19/23, 6:31:51 PM] Krishna Chintalapudi: What are you getting for the main classifier.
+[2/19/23, 6:32:08 PM] Krishna Chintalapudi: Not the accuracy predictor.
+[2/19/23, 6:32:35 PM] Pranav Kannepalli: For the main classifier I tried to keep it around 50% on purpose so that it would just return 1 everything for the accuracy predictor
+[2/19/23, 6:33:09 PM] Pranav Kannepalli: Also I tried with the cifar 10 dataset because no matter what I was doing it was too accurate
+[2/19/23, 6:33:26 PM] Krishna Chintalapudi: Ok. Let's chat when I get back.
+[2/19/23, 6:33:54 PM] Krishna Chintalapudi: Cifar10 is a tougher one. Ok.
+[2/19/23, 6:33:56 PM] Pranav Kannepalli: 👍🏽 I’ll keep toying around with the accuracy predictor in the meantime
+[2/19/23, 6:34:46 PM] Krishna Chintalapudi: Cool.
+[2/25/23, 12:28:10 PM] Pranav Kannepalli: Hi Krishna Uncle, just checking to see if you’re available to meet anytime soon.
+[2/25/23, 12:28:34 PM] Krishna Chintalapudi: Tomorrow? Not back yet.
+[2/25/23, 12:29:01 PM] Pranav Kannepalli: Preferably not tomorrow (it’s my birthday so I’ll be out), but any day after that should mostly work
+[2/25/23, 12:30:23 PM] Krishna Chintalapudi: Aah happy birthday!!
+[2/25/23, 12:30:35 PM] Pranav Kannepalli: Thank you!
+[2/25/23, 12:31:12 PM] Krishna Chintalapudi: Ok. Do you know about data augmentation?
+[2/25/23, 12:32:03 PM] Krishna Chintalapudi: If not read up. It helps a lot.
+[2/25/23, 12:32:15 PM] Pranav Kannepalli: Yes, I used it on the last project to add more data
+[2/25/23, 12:32:30 PM] Krishna Chintalapudi: Cool. Which project.
+[2/25/23, 12:32:54 PM] Pranav Kannepalli: The one that you gave me about predicting the accuracy of a second neural network
+[2/25/23, 12:33:09 PM] Pranav Kannepalli: It was overfitting so I was trying to fix that
+[2/25/23, 12:33:17 PM] Krishna Chintalapudi: Cool.
+[2/25/23, 12:34:36 PM] Krishna Chintalapudi: One thing I have been thinking is to not use a separate network for the predictor. Rather, use the features from the conv layer just before the fully connected layer as input.
+[2/25/23, 12:35:48 PM] Krishna Chintalapudi: The reasonable ng us that the classifier has already done the heavy lifting of creation ng potentially linearly sepetable features.
+[2/25/23, 12:36:28 PM] Pranav Kannepalli: Ic.
+[2/25/23, 12:36:31 PM] Pranav Kannepalli: Maybe I’ll try that
+[2/25/23, 12:37:21 PM] Krishna Chintalapudi: The whole idea of deep nets is that, all the layers before the fully connected layer map input to a linearly sepetable features set.
+[2/25/23, 12:37:57 PM] Krishna Chintalapudi: The final layer basically a perception or a standard 1 layer mlp can then classify.
+[2/25/23, 12:38:26 PM] Krishna Chintalapudi: The effectiveness of the deep net depends on the effectiveness of the features created.
+[2/25/23, 12:38:41 PM] Krishna Chintalapudi: Before the fully connected layers.
+[2/25/23, 12:39:17 PM] Krishna Chintalapudi: So it makes sense to use those features as I put to the predictor
+[2/25/23, 12:39:26 PM] Krishna Chintalapudi: Instead of the image
+[2/25/23, 12:39:54 PM] Pranav Kannepalli: Wait so how would implement this?
+[2/25/23, 12:40:25 PM] Krishna Chintalapudi: You would first train. A standard classifier.
+[2/25/23, 12:40:31 PM] Krishna Chintalapudi: Just as you did.
+[2/25/23, 12:41:14 PM] Krishna Chintalapudi: Then take the output tensor from the layer before the fully connected layer as the input vector for the predictor.
+[2/25/23, 12:41:22 PM] Krishna Chintalapudi: Instead of the images
+[2/25/23, 12:41:29 PM] Pranav Kannepalli: Yeah makes sense
+[2/25/23, 12:41:39 PM] Pranav Kannepalli: Okay I’ll try that
+[2/25/23, 12:41:45 PM] Krishna Chintalapudi: So suppose you have image I
+[2/25/23, 12:42:11 PM] Krishna Chintalapudi: For each image record the tensor.
+[2/25/23, 12:42:14 PM] Pranav Kannepalli: Yeah for image I make the prediction of what image it is and asscociate that with a set of features
+[2/25/23, 12:42:34 PM] Krishna Chintalapudi: Yea.
+[2/25/23, 12:42:51 PM] Krishna Chintalapudi: What's the tensor size?
+[2/25/23, 12:42:55 PM] Pranav Kannepalli: Then use that dataset of features with predictions to train the last model
+[2/25/23, 12:43:03 PM] Krishna Chintalapudi: Yea.
+[2/25/23, 12:43:40 PM] Krishna Chintalapudi: The network can be a simple perceptron or an mlp
+[2/25/23, 12:44:00 PM] Pranav Kannepalli: Ok
+[2/25/23, 12:45:24 PM] Krishna Chintalapudi: You said you are trying Cifar 10 and mnist right?
+[2/25/23, 12:45:28 PM] Pranav Kannepalli: Yes
+[2/25/23, 12:45:33 PM] Krishna Chintalapudi: There is also a fashion mnist.
+[2/25/23, 12:45:51 PM] Krishna Chintalapudi: It's in between interns of complexity.
+[2/25/23, 12:45:56 PM] Krishna Chintalapudi: Ok.
+[2/25/23, 12:46:19 PM] Pranav Kannepalli: Oh I see
+[2/25/23, 12:46:27 PM] Pranav Kannepalli: I found it on kaggle
+[2/25/23, 12:46:36 PM] Krishna Chintalapudi: Cool.
+[2/25/23, 12:46:40 PM] Pranav Kannepalli: Ok thank you
+[2/25/23, 12:47:13 PM] Krishna Chintalapudi: Cifar 100 is a tough one. Then there is the image net and it's subsets
+[2/25/23, 12:47:42 PM] Pranav Kannepalli: Yeah, it has 100 different classes instead of 10 right
+[2/25/23, 12:48:01 PM] Krishna Chintalapudi: We can start with cifar10 fashion mnist and mnist.
+[2/25/23, 12:48:06 PM] Krishna Chintalapudi: Then move up.
+[2/25/23, 12:48:09 PM] Pranav Kannepalli: 👍🏽
+[2/26/23, 5:11:37 PM] Pranav Kannepalli: Hi Krishna uncle, I implemented it using the features. Here's the Kaggle notebook for it: https://www.kaggle.com/code/pranavkannepalli/cifarprecisionwfeatures/notebook?scriptVersionId=120431418
+[2/26/23, 5:11:57 PM] Pranav Kannepalli: Right now its with CIFAR 10, although I can switch it to any other dataset pretty easily
+[3/8/23, 9:36:20 PM] Pranav Kannepalli: Hi Krishna Uncle, its been a busy couple weeks since the last time I texted you.
+[3/8/23, 9:36:26 PM] Pranav Kannepalli: Could we schedule a time to meet?
+[3/9/23, 4:23:44 AM] Krishna Chintalapudi: Sure. How about this Saturday?
+[3/9/23, 6:50:35 AM] Pranav Kannepalli: I’ll have to check, what time were you thinking?
+[3/9/23, 7:49:59 AM] Krishna Chintalapudi: Or Sunday.
+[3/9/23, 7:50:15 AM] Krishna Chintalapudi: Tell me your free times on both days.
+[3/10/23, 6:38:04 PM] Pranav Kannepalli: Sry for the late response
+[3/10/23, 6:38:10 PM] Pranav Kannepalli: I think I’m free all day tomorrow
+[3/10/23, 10:32:27 PM] Krishna Chintalapudi: Ok.
+[3/11/23, 11:47:18 AM] Pranav Kannepalli: Are you free today Krishna uncle?
+[3/11/23, 12:03:40 PM] Krishna Chintalapudi: Yes. How about 5-6:30 sometime?
+[3/11/23, 12:05:20 PM] Pranav Kannepalli: Could we do 5:30 to 6:30 please?
+[3/11/23, 12:05:43 PM] Krishna Chintalapudi: Yes.
+[3/11/23, 12:06:06 PM] Krishna Chintalapudi: I have some guests for lunch. After they go I will call.
+[3/11/23, 6:21:05 PM] Pranav Kannepalli: Don’t know if your still busy Krishna uncle, but quick reminder regarding the call
+[3/11/23, 6:44:00 PM] Pranav Kannepalli: image omitted
+[3/11/23, 7:01:00 PM] Pranav Kannepalli: Join Zoom Meeting
+https://us05web.zoom.us/j/89362276233?pwd=Um1HUkZSV1VwakFlTWczVTFnWVk1UT09
+
+Meeting ID: 893 6227 6233
+Passcode: svt7mz
+[3/11/23, 7:01:48 PM] Krishna Chintalapudi: chintalapudi.krishna@gmail.com
+[3/11/23, 7:22:35 PM] Pranav Kannepalli: Sry my pc crashed
+[3/29/23, 3:45:45 PM] Pranav Kannepalli: Hi Krishna Uncle, it's been a few weeks since I last texted you since I had TSA State (competition) and some other stuff going on in school. Should we meet up sometime soon?
+[3/30/23, 4:47:09 PM] Krishna Chintalapudi: No problem. I was thinking maybe we can try something a bit fun for a change.
+[3/30/23, 4:47:25 PM] Krishna Chintalapudi: Do you know about word embeddings?
+[3/30/23, 5:48:49 PM] Pranav Kannepalli: Sort of, I haven't really got so far into Natural Language Processing though
+[3/30/23, 6:47:33 PM] Krishna Chintalapudi: Ok no problem.
+[3/31/23, 4:17:33 PM] Krishna Chintalapudi: When are you free?
+[3/31/23, 5:15:55 PM] Pranav Kannepalli: I think I should be free Sunday and most weekdays, but probably not Wednesday
+[3/31/23, 5:18:29 PM] Krishna Chintalapudi: Ok let's chat on Sunday sometime.
+[3/31/23, 5:46:26 PM] Pranav Kannepalli: K sounds good, I'll check with my parents if we're doing anything and I'll c what time I'm available that day
+[4/9/23, 3:01:01 PM] Pranav Kannepalli: I’m so sorry Krishna uncle, things got a little busy last week
+[4/9/23, 3:01:17 PM] Pranav Kannepalli: I’m on spring break now though, so I can meet anytime you are available
+[4/9/23, 3:08:49 PM] Krishna Chintalapudi: We are in Vegas pranav. 😔 Ng break at our end too.
+[4/9/23, 3:09:10 PM] Krishna Chintalapudi: Will be back next Sunday.
+[4/9/23, 3:09:10 PM] Pranav Kannepalli: All good
+[4/9/23, 3:09:24 PM] Pranav Kannepalli: Competitions are finishing up as well, so I should be more free through April
+[4/9/23, 3:09:39 PM] Pranav Kannepalli: Have fun in Vegas!
+[4/25/23, 6:01:03 PM] Pranav Kannepalli: Hi Krishna uncle, I'm so sorry for the lack of communication, it's been a busy couple of weeks for me again.
+[4/25/23, 6:01:24 PM] Pranav Kannepalli: Just wanted to get in touch again before APs and other tests start from next week again.
+[5/10/23, 5:30:18 PM] Krishna Chintalapudi: Let me know when you are free.
+[5/10/23, 7:21:58 PM] Pranav Kannepalli: I should be free from today onwards. Last exam finished up today.
+[5/10/23, 9:05:07 PM] Krishna Chintalapudi: Ok. I have some ideas to try.
+[5/10/23, 9:15:38 PM] Pranav Kannepalli: K sounds good
+[5/10/23, 10:59:35 PM] Krishna Chintalapudi: Tomorrow?
+[5/11/23, 5:31:36 PM] Pranav Kannepalli: Sry idk if today will work
+[5/11/23, 5:31:50 PM] Pranav Kannepalli: Does tomorrow or Monday work for you?
+[5/11/23, 8:36:35 PM] Krishna Chintalapudi: Sure. Let's try tomorrow. What time?
+[5/11/23, 8:40:45 PM] Pranav Kannepalli: Does 4:30 work for you?
+[5/11/23, 8:41:17 PM] Krishna Chintalapudi: Yes.
+[5/11/23, 8:41:40 PM] Pranav Kannepalli: K we can try to meet then
+[5/11/23, 8:42:10 PM] Krishna Chintalapudi: What's your email? I will send you an invite.
+[5/11/23, 8:42:36 PM] Pranav Kannepalli: Pranav.kannepalli@gmail.com
+[5/11/23, 8:42:55 PM] Krishna Chintalapudi: Ok.
+[5/12/23, 4:34:35 PM] Krishna Chintalapudi: Pranav I sent you a teams invite.
+[5/12/23, 4:34:45 PM] Pranav Kannepalli: K sounds good
+[5/12/23, 4:34:49 PM] Krishna Chintalapudi: Can you join that.
+[5/12/23, 4:34:59 PM] Pranav Kannepalli: 👍🏽
+[5/12/23, 4:35:02 PM] Krishna Chintalapudi: If not you can send me zoom like last time.
+[5/12/23, 4:35:36 PM] Pranav Kannepalli: You deleted this message.
+[5/12/23, 4:35:39 PM] Pranav Kannepalli: You deleted this message.
+[5/21/23, 5:04:53 PM] Krishna Chintalapudi: Any progress or issues where you got stuck?
+[5/21/23, 5:06:07 PM] Pranav Kannepalli: Not so much yet, but I’ve done a little bit of work
+[5/21/23, 5:06:19 PM] Pranav Kannepalli: I should have more by Wednesday
+[5/21/23, 5:06:23 PM] Pranav Kannepalli: So we could prob meet then
+[5/21/23, 5:08:52 PM] Krishna Chintalapudi: Ok.
+[6/5/23, 8:23:39 PM] Pranav Kannepalli: Hi Krishna uncle, so sorry I've been gone these past two weeks. I'm ready to meet now whenever you are.
+[6/6/23, 11:21:05 AM] Krishna Chintalapudi: Going to India this Thursday.
+[6/6/23, 11:40:32 AM] Pranav Kannepalli: Ok
+[6/6/23, 1:13:37 PM] Krishna Chintalapudi: We can tomorrow evening if you have time.
+[6/7/23, 1:33:11 PM] Pranav Kannepalli: Sry Krishna uncle, I’m busy today
+[6/7/23, 1:33:34 PM] Pranav Kannepalli: If you could give me smth to work on, I could try to finish it by the time ur back though
+[6/21/23, 3:43:05 PM] Pranav Kannepalli: Hi krishna uncle, just wondering if you're back from India yet. I wouldn't assume so since it's only been a couple weeks, but just checking in.
+[6/21/23, 6:00:47 PM] Krishna Chintalapudi: We can still chat and continue ...
+[6/21/23, 6:02:01 PM] Pranav Kannepalli: yeah sounds good
+[6/21/23, 6:02:12 PM] Pranav Kannepalli: my days should be clearing up as well as finals are done and school ends on friday for us
+[7/4/23, 11:38:10 PM] Pranav Kannepalli: Hi Krishna uncle, just checking in again. Just came back from TSA nationals yesterday, so could we possibly find a time to meet? Summer break has started.
+[7/6/23, 10:04:53 PM] Pranav Kannepalli: Krishna uncle, should we meet sometime soon and j go over my progress so far, even if it is only for a little while?
+[7/6/23, 11:20:45 PM] Krishna Chintalapudi: I am in Thailand, will be in Cambodia tomorrow. Let's chat next week?
+[7/6/23, 11:21:05 PM] Pranav Kannepalli: Sure sounds good
+[7/13/23, 7:50:54 AM] Pranav Kannepalli: Hi Krishna uncle, just checking back again.
+[7/13/23, 7:51:45 AM] Krishna Chintalapudi: Let's catch up Friday evening?
+[7/13/23, 7:52:05 AM] Pranav Kannepalli: What time were you thinking?
+[7/13/23, 7:52:36 AM] Krishna Chintalapudi: It will be Saturday my time. When are you free?
+[7/13/23, 7:53:01 AM] Krishna Chintalapudi: In the evening.
+[7/13/23, 7:53:13 AM] Pranav Kannepalli: Does about 8 pm Seattle time work?
+[7/13/23, 7:53:29 AM] Krishna Chintalapudi: Ok.
+[7/13/23, 7:53:47 AM] Pranav Kannepalli: K sounds good thank you!
+[7/14/23, 8:31:05 PM] Pranav Kannepalli: Krishna uncle, are you ready to meet?
+[7/14/23, 8:32:40 PM] Pranav Kannepalli: Oh shoot
+[7/14/23, 8:32:42 PM] Pranav Kannepalli: Im so sry
+[7/14/23, 8:32:46 PM] Pranav Kannepalli: I though I said 8:30
+[7/14/23, 8:32:51 PM] Pranav Kannepalli: Ru still available?
+[7/15/23, 5:47:36 AM] Krishna Chintalapudi: How about same time tomorrow?
+[7/15/23, 5:51:36 AM] Krishna Chintalapudi: Also since it's been a long time. You will have to remind me what you did and we discussed.
+[7/15/23, 9:12:05 AM] Pranav Kannepalli: Sure that sounds good
+[7/15/23, 5:37:35 PM] Krishna Chintalapudi: Actually, I am a bit busy I'm the morning today at that time. I can chat tomorrow same time. Sorry for the last minute change.
+[7/15/23, 5:39:10 PM] Pranav Kannepalli: No worries, I think that’ll work better for me as well regardless.
+[7/15/23, 5:39:21 PM] Pranav Kannepalli: Wait where are you right now?
+[7/15/23, 6:26:52 PM] Krishna Chintalapudi: In India.
+[7/15/23, 6:27:01 PM] Pranav Kannepalli: 👍🏽
+[7/15/23, 6:27:07 PM] Pranav Kannepalli: Yeah we’ll meet tomorrow then?
+[7/15/23, 10:22:37 PM] Krishna Chintalapudi: Yes.
+[7/16/23, 7:01:47 PM] Krishna Chintalapudi: Hi pranav. Do you have a zoom link we can chat on? Can you send that to me on Gmail.
+[7/16/23, 7:09:31 PM] Pranav Kannepalli: I’m so sorry, we actually have a pooja to attend today, so could we please reschedule one last time to tomorrow?
+[7/16/23, 7:09:42 PM] Pranav Kannepalli: I’ll get that zoom link to you as soon as possible
+[7/16/23, 7:13:12 PM] Krishna Chintalapudi: Not sure. Let me get back to you on that.
+[7/17/23, 9:04:45 PM] Krishna Chintalapudi: Pranav. We can on Wednesday morning.
+[7/17/23, 10:04:33 PM] Pranav Kannepalli: India time or Seattle time?
+[7/17/23, 10:04:51 PM] Pranav Kannepalli: I would assume 8:00 PM PST tmrw right?
+[7/17/23, 11:00:20 PM] Krishna Chintalapudi: Actually day after.
+[7/17/23, 11:44:38 PM] Pranav Kannepalli: Ok sounds good
+[7/19/23, 8:05:01 PM] Pranav Kannepalli: R we meeting today
+[7/19/23, 8:05:27 PM] Pranav Kannepalli: Krishna uncle?
+[7/19/23, 8:07:40 PM] Pranav Kannepalli: https://us05web.zoom.us/j/88053028793?pwd=1ZreSra18E90u8xX2Wbyza4NZ0wIpD.1
+[7/19/23, 8:07:45 PM] Pranav Kannepalli: Here's the link
+[7/19/23, 8:09:15 PM] Krishna Chintalapudi: Send it to my Gmail.
+[7/19/23, 8:10:28 PM] Pranav Kannepalli: Sent
+[7/23/23, 11:56:17 AM] Pranav Kannepalli: Krishna uncle, i made the CDF. Could we schedule a time to meet sometime soon? Whenever you are free should work for me as well
+[7/28/23, 3:42:26 PM] Pranav Kannepalli: Krishna uncle?
+[7/28/23, 7:56:32 PM] Krishna Chintalapudi: We are traveling to Hyderabad today. Shall we chat tomorrow evening India time.
+[7/28/23, 8:05:32 PM] Pranav Kannepalli: Yeah that should work
+[8/23/23, 10:42:33 AM] Pranav Kannepalli: Hi Krishna uncle, i'm back from india and I should be free for some time. So sorry for the lack of communication.
+[8/23/23, 10:43:17 AM] Pranav Kannepalli: If it's okay with you, could we continue our work and possibly schedule a weekly or biweekly meeting sometime. I know you're busy, but whenever works for you should mostly work for me.
+[8/23/23, 3:30:46 PM] Krishna Chintalapudi: Ok. Will let you know tonight.
+[8/23/23, 3:44:35 PM] Pranav Kannepalli: Sounds good
+[8/25/23, 11:37:13 AM] Pranav Kannepalli: Hey Krishna uncle, just following up
+[8/31/23, 1:25:47 PM] Pranav Kannepalli: Krishna uncle?
+[8/31/23, 1:26:29 PM] Pranav Kannepalli: Could we meet sometime whenever you are free?
+[8/31/23, 1:50:11 PM] Pranav Kannepalli: Ok I've sent the link
+[8/31/23, 1:50:22 PM] Krishna Chintalapudi: Ok
+[8/31/23, 2:31:49 PM] Pranav Kannepalli: Sent you a link to a google meet
+[8/31/23, 2:31:53 PM] Pranav Kannepalli: That meeting ended
+[9/5/23, 4:40:49 PM] Krishna Chintalapudi: How are things?
+[9/5/23, 4:42:26 PM] Pranav Kannepalli: Going good
+[9/5/23, 4:42:35 PM] Pranav Kannepalli: Are we meeting today?
+[9/5/23, 4:42:47 PM] Krishna Chintalapudi: Are you free?
+[9/5/23, 4:42:59 PM] Krishna Chintalapudi: Let me know when?
+[9/5/23, 4:44:12 PM] Pranav Kannepalli: Yes I’m free
+[9/5/23, 4:44:16 PM] Pranav Kannepalli: When are you free today?
+[9/5/23, 4:46:58 PM] Krishna Chintalapudi: Let's chat now?
+[9/5/23, 4:47:26 PM] Pranav Kannepalli: Sure
+[9/5/23, 4:47:45 PM] Krishna Chintalapudi: Ok send me Google meet libk
+[9/5/23, 4:49:37 PM] Pranav Kannepalli: Sent
+[9/5/23, 4:50:40 PM] Pranav Kannepalli: To your gmail
+[9/15/23, 6:23:32 AM] Krishna Chintalapudi: Hi Pranav, I have a very different interesting idea for dnn  architecture optimization that you can work on quickly. If it works we might be able to publish it. You want to try?
+[9/15/23, 6:32:38 AM] Pranav Kannepalli: Yeah fs
+[9/15/23, 6:32:50 AM] Pranav Kannepalli: I’m a tad bit busy tonight
+[9/18/23, 6:11:35 PM] Pranav Kannepalli: Could we meet sometime tomorrow or the day after if that works for you?
+[9/19/23, 8:24:21 PM] Pranav Kannepalli: Krishna uncle?
+[9/19/23, 9:10:58 PM] Krishna Chintalapudi: Busy with deadlines.
+[9/19/23, 9:11:25 PM] Pranav Kannepalli: Oops sorry
+[9/19/23, 9:11:29 PM] Pranav Kannepalli: We’ll meet whenever u free up
+[9/25/23, 11:34:41 AM] Pranav Kannepalli: Hey Krishna uncle, just checking in again
+[9/27/23, 7:31:30 PM] Pranav Kannepalli: Krishna uncle ru free to meet?
+[9/27/23, 8:33:45 PM] Pranav Kannepalli: Anytime outside of school hours should work for me <This message was edited>
+[9/27/23, 8:33:57 PM] Pranav Kannepalli: Except friday around 6:30 - 7:30
+[9/28/23, 11:25:21 AM] Krishna Chintalapudi: Let me see. Will let you know.
+[10/2/23, 5:39:07 PM] Pranav Kannepalli: Any update Krishna uncle?
+[10/9/23, 6:53:25 AM] Krishna Chintalapudi: Your security code with Krishna changed.
+[10/12/23, 9:47:37 AM] Krishna Chintalapudi: Your security code with Krishna changed.
+[10/12/23, 9:47:37 AM] Krishna Chintalapudi: Disappearing messages were turned on. New messages will disappear from this chat 90 days after they're sent, except when kept. Tap to change.
+[10/12/23, 4:22:16 PM] Pranav Kannepalli: sounds good, sorry was at school
+[10/12/23, 4:22:32 PM] Pranav Kannepalli: with PSAT and whatnot done I should have much more time on my hands now
+[10/12/23, 5:46:08 PM] Pranav Kannepalli: ok sure
+[10/12/23, 5:46:27 PM] Pranav Kannepalli: do u have like a estimated next date when we'll meet or anything?
+[10/12/23, 5:50:09 PM] Pranav Kannepalli: yeah got it for sure
+[10/12/23, 6:06:58 PM] Pranav Kannepalli: ok got it
+[10/12/23, 6:07:02 PM] Pranav Kannepalli: ill check the pricing plan for eachone
+[10/13/23, 5:51:12 PM] Pranav Kannepalli: hey Krishna uncle
+[10/13/23, 5:51:18 PM] Pranav Kannepalli: here's the table you requested
+[10/13/23, 5:51:37 PM] Pranav Kannepalli: https://lwsd-my.sharepoint.com/:w:/g/personal/s-pkannepalli_lwsd_org/EYJX6MiRIetNpHJQDQ9I-QAB8PMW8Ea3czIqJkHIgvMJgQ?e=HGyTfl
+[10/13/23, 5:51:59 PM] Pranav Kannepalli: i included pricing, # of params, and context window for each model
+[10/13/23, 5:52:06 PM] Pranav Kannepalli: of llms that are available for consumer use mostly
+[10/16/23, 8:22:32 PM] Pranav Kannepalli: I couldn't find anything specifically about Bput RAG though so I just read up about Retrievel Augmented Generation in general
+[10/16/23, 8:23:54 PM] Pranav Kannepalli: 👍
+[10/25/23, 2:31:30 PM] Pranav Kannepalli: ok
+[10/25/23, 2:31:32 PM] Pranav Kannepalli: when are you free
+[10/25/23, 2:31:51 PM] Pranav Kannepalli: sure
+[10/25/23, 7:01:20 PM] Pranav Kannepalli: same link?
+[10/25/23, 7:05:36 PM] Pranav Kannepalli: yup
+[10/27/23, 3:55:13 PM] Pranav Kannepalli: done*
+[10/27/23, 3:55:17 PM] Pranav Kannepalli: autocorrect sorry
+[10/27/23, 6:34:03 PM] Pranav Kannepalli: Krishna uncle
+[10/27/23, 6:34:09 PM] Pranav Kannepalli: do you have access to a VM that I could use
+[9/30/24, 4:39:11 PM] Pranav Kannepalli: Hi Krishna uncle, I've finished the work with Experiment 2. Just getting my findings into a pptx. Can we schedule a meeting for tomorrow?
+[10/2/24, 2:45:19 PM] Pranav Kannepalli: Hi krishna uncle, could we schedule a meeting for tomorrow please? I have the powerpoint ready, just have a school deadline tonight.
+[10/4/24, 5:13:32 PM] Pranav Kannepalli: krishna uncle could we meet sometime later today?
+[10/8/24, 7:37:33 PM] Pranav Kannepalli: Krishna uncle, could we please meet sometime soon?
+[10/9/24, 8:55:58 AM] Krishna Chintalapudi: Sure meet today?
+[10/9/24, 2:44:41 PM] Pranav Kannepalli: Yes please, does 6 or 7 work for you?
+[10/9/24, 6:04:46 PM] Krishna Chintalapudi: Pranav busy today.
+[10/9/24, 6:04:55 PM] Krishna Chintalapudi: Let's meet tomorrow?
+[10/9/24, 6:07:07 PM] Pranav Kannepalli: Sounds good
+[10/9/24, 6:07:15 PM] Pranav Kannepalli: what time tomorrow works for you
+[10/9/24, 6:07:21 PM] Pranav Kannepalli: i have another meeting 4:30 to 5:30
+[10/9/24, 6:07:24 PM] Pranav Kannepalli: but other than that completely free
+[10/10/24, 6:26:16 PM] Pranav Kannepalli: Krishna uncle can we meet today?
+[10/14/24, 4:09:18 PM] Pranav Kannepalli: Krishna uncle if possible can we meet today or tomorrow
+[10/14/24, 4:09:26 PM] Pranav Kannepalli: I’m free almost anytime after school
+[10/14/24, 4:09:40 PM] Krishna Chintalapudi: Now?
+[10/14/24, 4:09:49 PM] Pranav Kannepalli: sure that works for me
+[10/14/24, 4:10:01 PM] Krishna Chintalapudi: Ok send me an invite.
+[10/14/24, 4:12:27 PM] Pranav Kannepalli: Sent Krishna uncle
+[10/14/24, 4:12:29 PM] Krishna Chintalapudi: Give me 20
+[10/14/24, 4:12:33 PM] Pranav Kannepalli: sounds good
+[10/14/24, 4:54:31 PM] Pranav Kannepalli: krishna uncle?
+[10/14/24, 5:05:03 PM] Pranav Kannepalli: krishna uncle are we meeting?
+[10/14/24, 5:12:06 PM] Krishna Chintalapudi: Calling now.
+[10/14/24, 5:12:49 PM] Krishna Chintalapudi: Got delayed. Are you the re?
+[10/18/24, 4:37:48 PM] Krishna Chintalapudi: Any results yet?
+[10/18/24, 4:38:46 PM] Pranav Kannepalli: almost done... it's running the last two columns still
+[10/22/24, 9:59:57 AM] Pranav Kannepalli: krishna uncle can we meet today?
+[10/22/24, 12:41:38 PM] Krishna Chintalapudi: Yes. When?
+[10/22/24, 3:32:50 PM] Pranav Kannepalli: 6 PM?
+[10/22/24, 4:52:56 PM] Krishna Chintalapudi: Sounds good.
+[10/22/24, 6:01:17 PM] Pranav Kannepalli: Krishna uncle, I just sent the link over email
+[10/22/24, 6:32:09 PM] Krishna Chintalapudi: Missed voice call, Tap to call back
+[10/22/24, 6:32:52 PM] Krishna Chintalapudi: Can you send me the graphs?
+[10/22/24, 6:33:03 PM] Krishna Chintalapudi: I mean today's graphs?
+[10/22/24, 6:33:09 PM] Krishna Chintalapudi: Voice call, 23 sec
+[10/22/24, 6:43:07 PM] Pranav Kannepalli: sent rn
+[10/26/24, 11:39:08 AM] Pranav Kannepalli: Krishna uncle, if possible, could you run experiment 3 with a MSFT OpenAI key?
+[10/26/24, 11:39:18 AM] Pranav Kannepalli: I'm getting rate limited and its causing it to error out
+[10/26/24, 11:43:55 AM] Pranav Kannepalli: the results im getting are really good
+[10/26/24, 11:44:16 AM] Pranav Kannepalli: but running the first three columns cost me $100 or something
+[10/26/24, 12:00:56 PM] Krishna Chintalapudi: Ok. Let me see.
+[10/29/24, 4:05:29 PM] Pranav Kannepalli: Krishna uncle, any update?
+[10/29/24, 5:28:03 PM] Krishna Chintalapudi: Pranav this will take time...
+[10/29/24, 5:28:15 PM] Pranav Kannepalli: ok sounds good
+[10/29/24, 5:28:18 PM] Pranav Kannepalli: just wanted to check in
+[11/8/24, 6:10:36 PM] Pranav Kannepalli: krishna uncle, please let me know if you have any updates. i’d love to be able to see the results of the experiments
+[11/8/24, 6:57:34 PM] Krishna Chintalapudi: Have ypu stopped doing g experiments...
+[11/8/24, 7:04:14 PM] Pranav Kannepalli: yes... i thought i was waiting for you to confirm whether this was possible or not...
+[11/8/24, 7:26:37 PM] Pranav Kannepalli: should i start running it again?
+[11/8/24, 7:56:13 PM] Krishna Chintalapudi: Yes please.
+[11/16/24, 11:37:36 AM] Pranav Kannepalli: Krishna uncle, the experiments finally finished and I made all the graphs
+[11/16/24, 11:37:40 AM] Pranav Kannepalli: Can we meet sometime soon?
+[11/16/24, 10:43:16 PM] Pranav Kannepalli: Krishna uncle?
+[11/16/24, 10:43:23 PM] Pranav Kannepalli: You deleted this message.
+[11/16/24, 11:51:03 PM] Pranav Kannepalli: oops wrong person on that second message
+[11/18/24, 3:43:00 PM] Pranav Kannepalli: Krishna uncle, can we meet today or tomorrow?
+[11/18/24, 5:46:13 PM] Krishna Chintalapudi: This message was deleted.
+[11/18/24, 5:53:08 PM] Krishna Chintalapudi: 730 tonight?
+[11/18/24, 6:00:40 PM] Pranav Kannepalli: that works for me
+[11/18/24, 7:28:12 PM] Pranav Kannepalli: Krishna uncle, i sent the link
+[11/18/24, 7:28:17 PM] Pranav Kannepalli: i'll be back in just 5 minutes
+[11/18/24, 7:28:21 PM] Pranav Kannepalli: need to do something really fast
+[11/22/24, 9:20:33 PM] Pranav Kannepalli: krishna uncle, just wanted to let you know that i’m unable to do any experiments right now because of the power outages
+[11/23/24, 9:24:38 AM] Krishna Chintalapudi: No problem.
+[11/28/24, 11:44:46 PM] Pranav Kannepalli: hi Krishna uncle, know its late today. Could we possibly meet tomorrow or the day after if you are available?
+[11/28/24, 11:44:51 PM] Pranav Kannepalli: I have the results you asked for
+[12/1/24, 11:59:26 AM] Pranav Kannepalli: Krishna uncle, could we meet later tonight or tomorrow?
+[12/2/24, 7:43:12 AM] Krishna Chintalapudi: Meet today?
+[12/2/24, 7:53:35 AM] Pranav Kannepalli: Yes please, anytime after 3
+[12/2/24, 4:18:51 PM] Pranav Kannepalli: Krishna uncle, what time works for you?
+[12/3/24, 6:43:53 PM] Pranav Kannepalli: Krishna uncle, could we meet today?
+[12/4/24, 3:11:04 PM] Pranav Kannepalli: Krishna uncle, are you free today for a quick meeting?
+[12/4/24, 10:24:32 PM] Krishna Chintalapudi: I lost my phone and just found it... let's chat tomorrow or day after?
+[12/4/24, 10:33:10 PM] Pranav Kannepalli: Sounds good, tomorrow works best for me
+[12/5/24, 4:43:16 PM] Pranav Kannepalli: Krishna uncle, are you free today for the meeting?
+[12/5/24, 6:38:44 PM] Krishna Chintalapudi: Let's chat tomorrow evening.
+[12/5/24, 6:40:21 PM] Pranav Kannepalli: sounds good
+[12/6/24, 6:21:30 PM] Krishna Chintalapudi: When r u free?
+[12/6/24, 6:21:42 PM] Pranav Kannepalli: anytime between 6:45 and 8
+[12/6/24, 6:21:57 PM] Krishna Chintalapudi: Ok 7 then.
+[12/6/24, 6:28:05 PM] Pranav Kannepalli: sounds good
+[12/6/24, 7:14:55 PM] Pranav Kannepalli: Video call, 2 min
+[12/6/24, 8:53:04 PM] Pranav Kannepalli: https://github.com/pranavkannepalli/LLM_Classification_Experiment
+[12/6/24, 8:53:06 PM] Pranav Kannepalli: here's the github
+[12/6/24, 8:53:12 PM] Pranav Kannepalli: repo
+[12/10/24, 8:13:46 PM] Pranav Kannepalli: Krishna uncle, are we meeting tomorrow?
+[12/12/24, 7:02:35 PM] Pranav Kannepalli: krishna uncle, are you free to meet today or tmrw?
+[12/12/24, 7:36:18 PM] Krishna Chintalapudi: Tomorrow evening?
+[12/12/24, 8:01:23 PM] Pranav Kannepalli: sure that works for me
+[12/14/24, 11:33:20 AM] Pranav Kannepalli: Krishna uncle, could we meet today?
+[12/16/24, 5:38:28 PM] Pranav Kannepalli: Krishna uncle, if you are free, could we meet today?
+[12/17/24, 5:33:23 PM] Pranav Kannepalli: krishna uncle, are you free anytime before thursday?
+[12/17/24, 5:33:37 PM] Pranav Kannepalli: we leave for cancun then and i was hoping to have a meeting
+[12/17/24, 6:10:49 PM] Krishna Chintalapudi: Tomorrow evening is possible.
+[12/17/24, 7:06:27 PM] Pranav Kannepalli: sounds good, what time works for you krishna uncle?
+[12/18/24, 3:14:57 PM] Pranav Kannepalli: Krishna uncle, what time are you free to meet today?
+[12/18/24, 3:32:28 PM] Krishna Chintalapudi: 530?
+[12/18/24, 4:06:05 PM] Pranav Kannepalli: sure that works for me
+[12/18/24, 5:30:53 PM] Pranav Kannepalli: Sent the link to your email
+[12/18/24, 5:41:28 PM] Pranav Kannepalli: Krishna uncle?
+[12/18/24, 5:45:00 PM] Krishna Chintalapudi: Missed voice call, Tap to call back
+[12/18/24, 5:46:21 PM] Pranav Kannepalli: sent a new link
+[12/27/24, 11:57:26 AM] Pranav Kannepalli: Krishna uncle, could we meet today or tomorrow if possible?
+[12/27/24, 12:16:32 PM] Krishna Chintalapudi: Travelling. Let's meet next week.
+[12/27/24, 12:16:40 PM] Pranav Kannepalli: sounds good
