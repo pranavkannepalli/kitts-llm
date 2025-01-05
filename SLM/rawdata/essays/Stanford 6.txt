@@ -1,0 +1,1 @@
+Interned at Applied Systems (billion-dollar insurance company), but given responsibilities of a full software engineer. Woke up at 6 am daily for standups. Realized I hate working EST hours. Built a test playground and pipeline from scratch for their services. Almost broke deployments of said services on a Friday afternoon.
